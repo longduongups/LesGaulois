@@ -2,7 +2,7 @@ package personnages;
 
 public abstract class Personnage {
 	 public String nom;
-	 private int force;
+	 public int force;
 	 public Personnage(String nom, int force) {
 	    	this.nom=nom;
 	    	this.force=force;
