@@ -3,13 +3,13 @@ package sites;
 import personnages.Soldat;
 
 public class Camp {
-	public Soldat commandant;
-	public Soldat[] romains = new Soldat[3];
+	private Soldat commandant;
+	private Soldat[] romains = new Soldat[3];
 	public Camp(Soldat commandant) {
 		this.commandant=commandant;
 	}
 	public String getCommandant() {
-		return this.commandant.nom;
+		return this.commandant.getNom();
 	}
 	public boolean ajouterSoldat(Soldat soldat) {
 		for (int i=0; i< this.romains.length;i++) {
@@ -19,19 +19,19 @@ public class Camp {
 				return true;
 			}
 		}
-				this.commandant.parler("Désolé " +soldat+" notre camp est complet");
+				this.commandant.parler("Désolé " +soldat.getNom()+" notre camp est complet");
 					return false;
 		}
 	public void afficherCamp() {
-		System.out.println("Le camp dirigé par "+this.commandant+" contient les soldats :");
+		System.out.println("Le camp dirigé par "+this.commandant.getNom()+" contient les soldats :");
 		for (int i=0;i<this.romains.length;i++) {
-			System.out.println(this.romains[i].nom);
+			System.out.println(this.romains[i].getNom());
 		}
 	}
 	public boolean changerCommandant(Soldat soldat) {
 		if (soldat.grade=="CENTURION") {
 			this.commandant=soldat;
-			soldat.parler(" Moi "+soldat.nom+" je prends la direction du camp romain.");
+			soldat.parler(" Moi "+soldat.getNom()+" je prends la direction du camp romain.");
 		return true;
 		}
 		else {

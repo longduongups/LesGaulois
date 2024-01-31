@@ -1,8 +1,8 @@
 package personnages;
 
 public abstract class Personnage {
-	 public String nom;
-	 public int force;
+	 private String nom;
+	 private int force;
 	 public Personnage(String nom, int force) {
 	    	this.nom=nom;
 	    	this.force=force;
@@ -13,6 +13,12 @@ public abstract class Personnage {
 	 public void parler(String text) {
 	    	System.out.println(" "+ this.donnerAuteur()+" "+this.nom +": "+text);
 	    }
+	 public int getForce() {
+	    	return this.force;
+	    }
+	 public void setForce(int force) {
+		 this.force=force;
+	 }
 	 public void recevoirCoup(int forceCoup){
 		 this.force=this.force-forceCoup;
 		 if (this.force>0) {
