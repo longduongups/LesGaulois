@@ -13,24 +13,23 @@ public class Druide extends Gaulois {
 	}
 	
 	public void fabriquerPotion(int nbDoseFab) {
-		this.parler(" J'ai concoctÃ© "+nbDoseFab+" doses de potion magique. Elle a une force de "+this.puissance);
+		this.parler(" J'ai concocté "+nbDoseFab+" doses de potion magique. Elle a une force de "+this.puissance);
 		nbDose=nbDose+nbDoseFab;
 	}
 	public int getNbDose() {
 		return this.nbDose;
 	}
-	public void booster(Gaulois gaulois) {
-		if (gaulois.getNom()=="ObÃ©lix") {
-			this.parler("Â« Non, ObÃ©lix Non !... Et tu le sais trÃ¨s bien");
-		}
-		else {
-		if (this.nbDose!=0) {
-			gaulois.setForce(gaulois.getForce()+this.puissance);
-			this.parler("Tien "+gaulois.getNom()+" un peu de potion magique. ");
-		}
-		else {
-			this.parler("DÃ©solÃ© "+gaulois.getNom()+" il n'y a plus une seule goutte de potion.");
-		}
+	 public void boosterGaulois(Gaulois gaulois) {
+	        if (gaulois.getNom().equals("Obélix")) {
+	            this.parler("« Non, Obélix Non !... Et tu le sais très bien");
+	        } else {
+	            if (this.nbDose > 0) {
+	                gaulois.booste(this.puissance);
+	                this.parler("Tiens " + gaulois.getNom() + ", un peu de potion magique.");
+	                nbDose--;
+	            } else {
+	                this.parler("Désolé " + gaulois.getNom() + ", il n'y a plus une seule goutte de potion.");
+	            }
+	        }
+	    }
 	}
-	}
-}
