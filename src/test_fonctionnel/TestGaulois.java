@@ -34,6 +34,7 @@ public class TestGaulois {
 		minus.parler(": UN GAU... UN GAUGAU...\n");
 		while((asterix.aTerre()!=true)&&(minus.aTerre()!=true)) {
 		asterix.frapper(minus);
+		if ((asterix.aTerre()!=true)&&(minus.aTerre()!=true))
 		minus.frapper(asterix);
 		}
 	}

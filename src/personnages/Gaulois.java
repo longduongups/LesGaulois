@@ -19,15 +19,14 @@ public class Gaulois extends Personnage{
     }
     public void booste(int puissance) {
     	this.puissance=puissance;
-    	this.force=this.force*this.puissance;
     }
     public void frapper(Personnage adversaire) { 	
-    	System.out.println(this.donnerAuteur()+ " "+this.getNom()+" envoie un coup de force"+this.getForce() +" au "+adversaire.getNom());
-    	adversaire.recevoirCoup(this.force/3);
+    	int forceCoup=this.force*this.puissance/3;
+    	System.out.println(this.donnerAuteur()+ " "+this.getNom()+" envoie un coup de force"+forceCoup +" au "+adversaire.getNom());
+    	adversaire.recevoirCoup(forceCoup);
     	if (this.puissance>1) {
         	this.puissance= (int) (this.puissance-0.5);
-        	this.force=this.force-this.force*0.5;
-        	}
+        }
     }
 }
 	
