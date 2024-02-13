@@ -4,13 +4,14 @@ import personnages.Druide;
 import personnages.Gaulois;
 import personnages.Romain;
 import personnages.Personnage;
+import personnages.Soldat;
 
 public class TestGaulois {
 	public static void main(String[] args) {
 		Gaulois asterix =new Gaulois("Asterix",5);
 		//System.out.println(asterix.getNom());
 		//asterix.parler(": Bonjour a tous \n");
-		Romain minus =new Romain("Minus",6);
+		Soldat minus = new Soldat("Minus",6, "CENTURION");
 		//System.out.println(minus.getNom());
 		//minus.parler(": UN GAU... UN GAUGAU...\n");
 		//for (int i =0;i<2;i++) {
@@ -19,6 +20,9 @@ public class TestGaulois {
 	    //for (int i =0;i<5;i++) {
 			//asterix.frapper(minus);	
 		//}
+		 minus.equiper(Soldat.Equipement.BOUCLIER);
+	     minus.equiper(Soldat.Equipement.CASQUE);
+	     minus.equiper(Soldat.Equipement.PLASTRON);
 		Gaulois agecanonix = new Gaulois("Agecanonix",1);
 		Gaulois assurancetourix = new Gaulois("Assurancetourix",2);
 		Gaulois obelix = new Gaulois("Obélix",15);
