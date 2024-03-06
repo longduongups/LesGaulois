@@ -1,35 +1,39 @@
 package personnages;
 
-import java.util.Random;
-
 public class Druide extends Gaulois {
-	private int nbDose;
-	Random rand = new Random();
-	private int puissance;
+
+	private int dosesPotion;
+	private int forcePotion;
+	
 	public Druide(String nom, int force) {
 		super(nom, force);
-		nbDose=0;
-		puissance=rand.nextInt(5)+2;
 	}
 	
-	public void fabriquerPotion(int nbDoseFab) {
-		this.parler(" J'ai concocté "+nbDoseFab+" doses de potion magique. Elle a une force de "+this.puissance);
-		nbDose=nbDose+nbDoseFab;
+	public void fabriquerPotion(int doses) {
+		dosesPotion = doses;
+		forcePotion = 2 + (int)(Math.random() * 3);
+		this.parler("J'ai concoctÃ© " + dosesPotion + " doses de potion magique. Elle a une force de " + forcePotion );
 	}
-	public int getNbDose() {
-		return this.nbDose;
+	
+	
+	public void donnerPotion(Gaulois gaulois) {
+		if ( !"ObÃ©lix".equals(gaulois.getNom()) ) {
+			if (dosesPotion>0) {
+				this.parler("Tiens " + gaulois.getNom() + " un peu de potion magique.");
+				gaulois.recevoirPotion(forcePotion);
+				dosesPotion--;
+			}
+			else {
+				this.parler("DÃ©solÃ© " + gaulois.getNom() + "il n'y a plus une seule goutte de potion.");
+			}
+		}		
+		else {
+			this.parler("Non, ObÃ©lix Non !... Et tu le sais trÃ¨s bien !");
+		}
 	}
-	 public void boosterGaulois(Gaulois gaulois) {
-	        if (gaulois.getNom().equals("Obélix")) {
-	            this.parler("« Non, Obélix Non !... Et tu le sais très bien");
-	        } else {
-	            if (this.nbDose > 0) {
-	                gaulois.booste(this.puissance);
-	                this.parler("Tiens " + gaulois.getNom() + ", un peu de potion magique.");
-	                nbDose--;
-	            } else {
-	                this.parler("Désolé " + gaulois.getNom() + ", il n'y a plus une seule goutte de potion.");
-	            }
-	        }
-	    }
-	}
+		
+	
+	
+	
+
+}

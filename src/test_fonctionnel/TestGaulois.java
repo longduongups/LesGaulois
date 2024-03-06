@@ -1,45 +1,48 @@
 package test_fonctionnel;
 
+import personnages.Armure;
 import personnages.Druide;
 import personnages.Gaulois;
+import personnages.Grade;
 import personnages.Romain;
-import personnages.Personnage;
 import personnages.Soldat;
 
 public class TestGaulois {
 	public static void main(String[] args) {
-		Gaulois asterix =new Gaulois("Asterix",5);
+		
+		Gaulois asterix = new Gaulois("Astérix",5);
+		Soldat minus = new Soldat ("Minus",Grade.SOLDAT,6);
+		
 		//System.out.println(asterix.getNom());
-		//asterix.parler(": Bonjour a tous \n");
-		Soldat minus = new Soldat("Minus",6, "CENTURION");
-		//System.out.println(minus.getNom());
-		//minus.parler(": UN GAU... UN GAUGAU...\n");
-		//for (int i =0;i<2;i++) {
-		//minus.recevoirCoup(3);
-		//}
-	    //for (int i =0;i<5;i++) {
-			//asterix.frapper(minus);	
-		//}
-		 minus.equiper(Soldat.Equipement.BOUCLIER);
-	     minus.equiper(Soldat.Equipement.CASQUE);
-	     minus.equiper(Soldat.Equipement.PLASTRON);
-		Gaulois agecanonix = new Gaulois("Agecanonix",1);
-		Gaulois assurancetourix = new Gaulois("Assurancetourix",2);
-		Gaulois obelix = new Gaulois("Ob�lix",15);
-		Gaulois abraracourcix = new Gaulois("Abraracourcix",5);
-		Gaulois prolix = new Gaulois("Prolix",2);
-		Druide panoramix= new Druide("Panoramix",2);
+		
+		Gaulois obelix = new Gaulois("Obélix",15);
+		Gaulois assurancetourix = new Gaulois("Assurancetourix",4);
+		Gaulois abraracourcix = new Gaulois("Abraracourcix",4);
+		Gaulois agecanonix = new Gaulois("Agecanonix",4);
+		
+		minus.equiperArmure(Armure.BOUCLIER);
+		minus.equiperArmure(Armure.CASQUE);
+		minus.equiperArmure(Armure.PLASTRON);
+		
+		Druide panoramix = new Druide("Panoramix",1);
 		panoramix.fabriquerPotion(3);
-		panoramix.boosterGaulois(asterix);
-		panoramix.boosterGaulois(obelix);
-		panoramix.boosterGaulois(assurancetourix);
-		panoramix.boosterGaulois(abraracourcix);
-		panoramix.boosterGaulois(agecanonix);
-		minus.parler(": UN GAU... UN GAUGAU...\n");
-		while((asterix.aTerre()!=true)&&(minus.aTerre()!=true)) {
-		asterix.frapper(minus);
-		if ((asterix.aTerre()!=true)&&(minus.aTerre()!=true))
-		minus.frapper(asterix);
+		
+		
+		panoramix.donnerPotion(asterix);
+		panoramix.donnerPotion(obelix);
+		panoramix.donnerPotion(assurancetourix);
+		panoramix.donnerPotion(abraracourcix);
+		panoramix.donnerPotion(agecanonix);
+		
+		
+		
+		asterix.parler("Bonjour à tous");
+		minus.parler("Un Gau .. Gaugole");
+		
+		
+		for (int i = 0; i<4; i++) {
+			asterix.frapper(minus);
+			minus.frapper(asterix);
 		}
 	}
 }
